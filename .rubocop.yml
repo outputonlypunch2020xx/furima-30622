@@ -20,6 +20,7 @@ Layout/LineLength:
    - "spec/spec_helper.rb"
 
 # RSpecは1つのブロックあたりの行数が多くなるため、チェックの除外から外す
+# ブロック内の行数をチェックする
 Metrics/BlockLength:
  Exclude:
    - "spec/**/*"
