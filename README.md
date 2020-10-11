@@ -1,12 +1,15 @@
 ## users テーブル
 
-| Column      | Type   | Options     |
-| ------------| ------ | ----------- |
-| nickname    | string | null: false |
-| email       | string | null: false |
-| password    | string | null: false |
-| name        | string | null: false |
-| birthday    | date   | null: false |
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| birthday         | date   | null: false |
+| family_name      | string | null: false |
+| first_name       | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana  | string | null: false |
 
 
 ### Association
@@ -17,14 +20,15 @@
 ## items テーブル
 
 | Column       | Type       | Options     |
-| -----------  | -----------| ----------- |
-| item_name    | string     | null: false |
+| ------------ | -----------| ----------- |
+| name         | string     | null: false |
 | text         | text       | null: false |
-| user_id      | references | null: false |
-| category     | string     | null: false |
-| item_status  | string     | null: false |
-| area         | string     | null: false |
-| shipping_days| string     | null: false |
+| user         | references | null: false | foreign_key: true |
+| category     | integer    | null: false |
+| item_status  | integer    | null: false |
+| area         | integer    | null: false |
+| shipping_days| integer    | null: false |
+| shipping_fee | integer    | null: false |
 | price        | integer    | null: false |
 
 ### Association
@@ -36,9 +40,8 @@
 
 | Column     | Type       | Options     |
 | -----------| ---------- | ----------- |
-| user_id    | references | null: false |
-| item_id    | references | null: false |
-| buyer_id   | references | null: false |
+| user       | references | null: false | foreign_key: true |
+| item       | references | null: false | foreign_key: true |
 
 ### Association
 
@@ -50,9 +53,13 @@
 
 | Column           | Type       | Options     |
 | ---------------- | ------     | ----------- |
-| credit_number    | integer    | null: false |
-| shipping_address | string     | null: false |
-| item_id          | references | null: false |
+| Postal code      | integer    | null: false |
+| State            | integer    | null: false |
+| city             | string     | null: false |
+| Address Line 1   | string     | null: false |
+| Address Line 2   | string     | null: false |
+| Phone Number     | integer    | null: false |
+| item             | references | null: false | foreign_key: true |
 
 ### Association
 
