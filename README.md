@@ -19,17 +19,17 @@
 
 ## items テーブル
 
-| Column       | Type       | Options     |
-| ------------ | -----------| ----------- |
-| name         | string     | null: false |
-| text         | text       | null: false |
-| user         | references | null: false | foreign_key: true |
-| category     | integer    | null: false |
-| item_status  | integer    | null: false |
-| area         | integer    | null: false |
-| shipping_days| integer    | null: false |
-| shipping_fee | integer    | null: false |
-| price        | integer    | null: false |
+| Column           | Type       | Options     |
+| ---------------- | -----------| ----------- |
+| name             | string     | null: false |
+| text             | text       | null: false |
+| user             | references | null: false | foreign_key: true |
+| category_id      | integer    | null: false |
+| item_status_id   | integer    | null: false |
+| area_id          | integer    | null: false |
+| shipping_days_id | integer    | null: false |
+| shipping_fee_id  | integer    | null: false |
+| price            | integer    | null: false |
 
 ### Association
 
@@ -53,13 +53,13 @@
 
 | Column           | Type       | Options     |
 | ---------------- | ------     | ----------- |
-| Postal code      | integer    | null: false |
-| State            | integer    | null: false |
+| postal_code      | string     | null: false |
+| state_id         | integer    | null: false |
 | city             | string     | null: false |
-| Address Line 1   | string     | null: false |
-| Address Line 2   | string     | null: false |
-| Phone Number     | integer    | null: false |
-| item             | references | null: false | foreign_key: true |
+| house_number     | string     | null: false |
+| bldg             | string     | null: false |
+| phone_number     | string     | null: false |
+| purchase         | references | null: false | foreign_key: true |
 
 ### Association
 
