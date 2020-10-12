@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :items do
   end
+  resources :users, only: [:edit, :update]
 end
