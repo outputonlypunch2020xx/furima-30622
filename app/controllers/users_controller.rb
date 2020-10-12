@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def edit
-    #binding.pry
+    # binding.pry
   end
 
   def update
@@ -14,6 +14,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname,:birthday,:family_name,:first_name,:family_name_kana,:first_name_kana)
+    params.require(:user).permit(:nickname, :birthday, :family_name, :first_name, :family_name_kana, :first_name_kana)
   end
 end
