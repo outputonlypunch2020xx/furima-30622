@@ -25,9 +25,9 @@ class Item < ApplicationRecord
 
   with_options presence: true do
   validates :price, numericality: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters."}
-  end
-
-  
+  validates :price, numericality: { greater_than: 299}
+  validates :price, numericality: { less_than: 9999999}
+ end
 
   has_one_attached :image
   belongs_to :user
