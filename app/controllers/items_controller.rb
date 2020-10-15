@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:new]
+  before_action :move_to_index, only: [:new]
   def index
     @items = Item.all
   end
