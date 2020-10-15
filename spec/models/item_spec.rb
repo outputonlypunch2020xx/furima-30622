@@ -68,6 +68,11 @@ RSpec.describe Item, type: :model do
         item.valid?
         expect(item.errors[:item]).to include
       end
-    end
+      it '価格は半角数字のみ保存可能であること' do
+        item = build(:item, price: '/\A[0-9]+\z/')
+        item.valid?
+        expect(item.errors[:item]).to include
+      end
+   end
   end
 end
