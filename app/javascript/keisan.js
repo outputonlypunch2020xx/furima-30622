@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener('turbolinks:load', () => {
   const Tax = 0.10;
   const itemPrice = document.getElementById("item-price");
   itemPrice.addEventListener("input", () => {

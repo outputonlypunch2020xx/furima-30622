@@ -2,9 +2,9 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :area
   belongs_to_active_hash :category
-  belongs_to_active_hash :itemstatus
-  belongs_to_active_hash :shippingday
-  belongs_to_active_hash :shippingfee
+  belongs_to_active_hash :item_status
+  belongs_to_active_hash :delivery_time
+  belongs_to_active_hash :shipping_fee
 
   with_options presence: true do
     validates :name
@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     with_options numericality: { other_than: 1 } do
       validates :category_id
       validates :item_status_id
-      validates :shipping_days_id
+      validates :delivery_time_id
       validates :shipping_fee_id
     end
 
