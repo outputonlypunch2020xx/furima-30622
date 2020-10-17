@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :item_find, only: [:edit, :update, :show]
-  before_action :move_to_index, only: [:edit]
   before_action :correct_user, only: [:edit, :update]
 
   def index
@@ -46,9 +45,6 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
-  end
 
   def correct_user
     redirect_to action: :index unless user_signed_in? && current_user.id == @item.user.id
