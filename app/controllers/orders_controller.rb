@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index]
-  # before_action :move_to_root_path, only: [:index]
+  before_action :move_to_root_path, only: [:index]
   before_action :item_find, only: [:index, :create]
   before_action :sell_user, only: [:index]
+  before_action :sold_out_item, only: [:index]
+
   def index
     @object = ObjectItem.new
   end
@@ -45,6 +47,12 @@ class OrdersController < ApplicationController
   end
 
   def sell_user
-    redirect_to root_path if current_user.id == @item.user_id
+    redirect_to root_path if current_user.id == @item.user.id
+  end
+
+  def sold_out_item
+    if @item.order.present?
+    redirect_to root_path 
+  end
   end
 end

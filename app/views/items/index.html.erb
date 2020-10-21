@@ -136,13 +136,13 @@
         <% end %>
 
 
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <% if item.id.nil? %>
+          
+          <% if item.order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
           <% end %>
-          <%# //商品が売れていればsold outを表示しましょう %>
+          
 
         </div>
         <div class='item-info'>
