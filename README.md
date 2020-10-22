@@ -15,7 +15,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル
 
@@ -27,16 +27,16 @@
 | category_id      | integer    | null: false |
 | item_status_id   | integer    | null: false |
 | area_id          | integer    | null: false |
-| shipping_days_id | integer    | null: false |
+| delivery_time_id | integer    | null: false |
 | shipping_fee_id  | integer    | null: false |
 | price            | integer    | null: false |
 
 ### Association
 
 - belongs_to :user
-- has_one : purchase
+- has_one : order
 
-## purchases テーブル
+## order テーブル
 
 | Column     | Type       | Options     |
 | -----------| ---------- | ----------- |
@@ -59,8 +59,18 @@
 | house_number     | string     | null: false |
 | bldg             | string     |             |
 | phone_number     | string     | null: false |
-| purchase         | references | null: false | foreign_key: true |
+| order         | references | null: false | foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order
+
+
+---------------------
+# カード情報の入力
+ーーーーーーーーーーーー
+# numberクレジットカードの番号
+# exp_month有効期限の月
+# exp_year有効期限の年
+# cvcセキュリティコード
+
