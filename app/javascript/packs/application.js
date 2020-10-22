@@ -7,7 +7,7 @@ require("@rails/ujs").start()
 //require("turbolinks").start()        後の実装に役立てるため
 require("@rails/activestorage").start()
 require("channels")
-require("../keisan.js");
+require("../keisan");
 require("../card")
 
 
