@@ -3,8 +3,7 @@ const pay = () => {
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-   //console.log("イベント発火");
-//debugger;
+  
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
 
