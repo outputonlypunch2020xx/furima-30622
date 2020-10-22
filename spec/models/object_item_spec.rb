@@ -43,12 +43,12 @@ RSpec.describe ObjectItem, type: :model do
     it '電話番号が12桁以上では購入ができないこと' do
       @object_item.phone_number = '123456789012'
       @object_item.valid?
-      expect(@object_item.errors.full_messages).to include("Phone number is invalid")
+      expect(@object_item.errors.full_messages).to include('Phone number is invalid')
     end
     it 'ハイフンを含む場合に購入ができないこと' do
       @object_item.phone_number = '-'
       @object_item.valid?
-      expect(@object_item.errors.full_messages).to include("Phone number is invalid")
+      expect(@object_item.errors.full_messages).to include('Phone number is invalid')
     end
     it '建物名は空でも保存できること' do
       @object_item.bldg = nil
@@ -59,6 +59,5 @@ RSpec.describe ObjectItem, type: :model do
       @object_item.valid?
       expect(@object_item.errors.full_messages).to include("Token can't be blank")
     end
-   
   end
 end
