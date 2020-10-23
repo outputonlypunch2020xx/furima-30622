@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+   
   end
 
   def create
@@ -22,6 +23,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    #@messages = Message.all
+    @message = Message.new
+    @messages = @item.messages.includes(:user)
   end
 
   def edit
