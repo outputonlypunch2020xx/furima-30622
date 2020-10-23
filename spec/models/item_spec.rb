@@ -49,9 +49,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Area must be other than 0')
       end
       it '発送までの日数についての情報がない' do
-        @item.shipping_days_id = '1'
+        @item.delivery_time_id = '1'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping day must be other than 1')
+        expect(@item.errors.full_messages).to include('Delivery time must be other than 1')
       end
       it '価格についての情報がない' do
         @item.price = nil
