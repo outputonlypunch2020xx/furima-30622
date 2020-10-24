@@ -204,3 +204,17 @@
   font-weight: bold;
   font-size: 23px;
 }
+
+.scroll {
+  overflow: scroll;
+  width: 70vw;
+  height: 250px; 
+  padding: 10vh 15vw;
+}
+
+.field {
+  
+    width: 70vw;
+    height: 20px;
+    font-size: 20px;
+}

@@ -3,17 +3,15 @@ class MessagesController < ApplicationController
   end
 
   def create
-    # @message = Message.new(text: params[:message][:text])
-    # if @message.save
-    # ActionCable.server.broadcast 'message_channel', content: @message
-    # end
-    masseage = Message.create(message_params)
-    redirect_to root_path
+    @message = Message.new(message_params)
+    if @message.save
+      @user = @message.user
+      ActionCable.server.broadcast 'message_channel', content: @message, user: @user
+    end
   end
 
   private
-
   def message_params
-    message.require(:message).permit(:text).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:message).permit(:text).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 end

@@ -126,8 +126,6 @@
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
 
-
-
       <% @items.each do |item| %>
           <li class='list'>
         <%= link_to item_path(item.id),method: :get  do%>
@@ -135,15 +133,12 @@
           <%= image_tag item.image, class: "item-img" if item.image.attached? %>
         <% end %>
 
-
-          
           <% if item.order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
           <% end %>
           
-
         </div>
         <div class='item-info'>
           <h3 class='item-name'>

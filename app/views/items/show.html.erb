@@ -87,43 +87,43 @@
 
 
 
-
-
-  <div class="comment-box">
-    <form>
-    <%= form_with uri: '/items/:item_id/messages' do |f| %>
-    <%= f.text_area :text, placeholder: "メッセージを送る", rows: "3" %>
-    <%= f.submit '送信' %>
-    <% end %>
-    <div id='messages'>
-    <% @messages.reverse_each do |message| %>
-    <p><%= message.text %></p>
-  <% end %>
-    </div>
-    <div class="comments">
-      <h4>＜コメント一覧＞</h4>
-  <% if @comments %>
-        <% @comments.each do |comment| %>
+<p>コメント一覧</p>
+  <div id="comment-box">
+   
+      <div class="scroll">
+     
+        <% if @messages %>
+        <% @messages.reverse_each do |message| %>
           <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-            <%= comment.text %>
+            <strong><%= link_to message.user.nickname, "/users/#{message.user.id}" %>：</strong>
+            <%= message.text %>
           </p>
         <% end %>
-      <% end %>
-    </div>
-</div>
-      <%# <textarea class="comment-text"></textarea> #%>
-      <p class="comment-warn">
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= form_with model: [@item, @message] do |f|%>
+        <%= f.text_field :text, placeholder: "メッセージを送る" %>
+       </div>
+       
+        <p class="comment-warn">
+        <div>
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。    
+       </div>
       </p>
+
       <button type="submit" class="comment-btn">
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
         <span>コメントする<span>
+        <%= f.submit %>
+       <% end %>
       </button>
-    </form>
+
   </div>
+
   <div class="links">
     <a href="#" class="change-item-btn">
       ＜ 前の商品
