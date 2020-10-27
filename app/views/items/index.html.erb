@@ -1,6 +1,6 @@
 <%= render "shared/header" %>
 <div class='main'>
-
+<%#= link_to 'マイページへ行く', user_path(current_user) %>
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
   <div class='title-contents'>
     <h2 class='service-title'>
@@ -138,7 +138,14 @@
             <span>Sold Out!!</span>
           </div>
           <% end %>
-          
+        
+
+  <% if item.click_order.present? %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+
         </div>
         <div class='item-info'>
           <h3 class='item-name'>

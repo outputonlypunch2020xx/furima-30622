@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :item_find, only: [:edit, :update, :show, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :click_order_item, only: [:order]
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
@@ -24,7 +25,6 @@ class ItemsController < ApplicationController
   def show
     @messages = Message.all
     @message = Message.new
-    #@messages = @item.messages.includes(:user)
   end
 
   def edit
@@ -47,6 +47,20 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:keyword])
   end
 
+  def order
+    redirect_to new_card_path and return unless current_user.card.present?
+
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    customer_token = current_user.card.customer_token
+    Payjp::Charge.create(
+      amount: @item.price,
+      customer: customer_token,
+      currency: 'jpy'
+      )
+      ClickOrder.create(item_id: params[:id])
+      redirect_to root_path
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :text, :area_id, :category_id, :item_status_id, :delivery_time_id, :shipping_fee_id, :image, :price).merge(user_id: current_user.id)
@@ -58,5 +72,9 @@ class ItemsController < ApplicationController
 
   def correct_user
     redirect_to action: :index unless user_signed_in? && current_user.id == @item.user.id
+  end
+
+  def click_order_item
+    @item = Item.find(params[:id])
   end
 end

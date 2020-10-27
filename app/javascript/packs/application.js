@@ -4,14 +4,14 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-//require("turbolinks").start()        後の実装に役立てるため
+//require("turbolinks").start()         必要な場合開放[ターボリンク]
 require("@rails/activestorage").start()
 require("channels")
 require("../keisan");
 require("../card")
 require('./preview') 
-//require("../tag")
-
+//require("../tag")                     必要な場合開放[ぱん屑機能]
+require("../registration_card")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
