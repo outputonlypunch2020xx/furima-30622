@@ -17,6 +17,8 @@
 - has_many :items
 - has_many :orders
 - has_many :messages
+- has_many :sns_credentials
+- has_one  :card
 
 ## items テーブル
 
@@ -35,8 +37,9 @@
 ### Association
 
 - belongs_to :user
-- has_one : order
-- has_many :messages
+- has_one    : order
+- has_many   :messages
+- has_one    :click_order
 
 ## order テーブル
 
@@ -61,7 +64,7 @@
 | house_number     | string     | null: false |
 | bldg             | string     |             |
 | phone_number     | string     | null: false |
-| order         | references | null: false | foreign_key: true |
+| order            | references | null: false | foreign_key: true |
 
 ### Association
 
@@ -82,14 +85,36 @@
 - belongs_to :item
 
 
+## sns_credentials テーブル
 
+| Column     | Type       | Options     |
+| ---------- | ---------- |
+| provider   | string     |
+| uid        | string     |
+| user       | references | null: false | foreign_key: true |
 
+### Association
 
----------------------
-# カード情報の入力
-ーーーーーーーーーーーー
-# numberクレジットカードの番号
-# exp_month有効期限の月
-# exp_year有効期限の年
-# cvcセキュリティコード
+- belongs_to :user
 
+## cards テーブル
+
+| Column         | Type       | Options     |
+| -------------- | ---------- |
+| card_token     | string     | null: false |
+| customer_token | string     | null: false |
+| user           | references | null: false | foreign_key: true |
+
+### Association
+
+- belongs_to :user
+
+## click_orders テーブル
+
+| Column         | Type       | Options     |
+| -------------- | ---------- |
+| item           | references | null: false | foreign_key: true |
+
+### Association
+
+- belongs_to :item

@@ -50,18 +50,19 @@ class ItemsController < ApplicationController
   def order
     redirect_to new_card_path and return unless current_user.card.present?
 
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     customer_token = current_user.card.customer_token
     Payjp::Charge.create(
       amount: @item.price,
       customer: customer_token,
       currency: 'jpy'
-      )
-      ClickOrder.create(item_id: params[:id])
-      redirect_to root_path
+    )
+    ClickOrder.create(item_id: params[:id])
+    redirect_to root_path
   end
 
   private
+
   def item_params
     params.require(:item).permit(:name, :text, :area_id, :category_id, :item_status_id, :delivery_time_id, :shipping_fee_id, :image, :price).merge(user_id: current_user.id)
   end

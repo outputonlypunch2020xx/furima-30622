@@ -31,7 +31,7 @@ class Item < ApplicationRecord
   has_one :click_order
 
   def self.search(search)
-    if search != ""
+    if search != ''
       Item.where('text LIKE(?)', "%#{search}%")
     else
       Item.all
