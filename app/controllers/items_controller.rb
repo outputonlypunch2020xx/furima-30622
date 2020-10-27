@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :item_find, only: [:edit, :update, :show, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
@@ -43,8 +43,11 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  private
+  def search
+    @items = Item.search(params[:keyword])
+  end
 
+  private
   def item_params
     params.require(:item).permit(:name, :text, :area_id, :category_id, :item_status_id, :delivery_time_id, :shipping_fee_id, :image, :price).merge(user_id: current_user.id)
   end
