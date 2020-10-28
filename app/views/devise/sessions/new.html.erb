@@ -1,6 +1,13 @@
 <%= render "shared/second-header"%>
-<%= link_to 'Facebookでログイン', user_facebook_omniauth_authorize_path, method: :post%>
-<%= link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post%>
+<div class='sns_signin'>
+<%= link_to user_facebook_omniauth_authorize_path, method: :post do%>
+  <%= image_tag "facebook_signin.png", class: "facebook-img"%>
+<%end%>
+
+<%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+  <%= image_tag "google_signin.png", class: "google-img"%>
+<%end%>
+</div>
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>

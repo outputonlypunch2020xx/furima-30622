@@ -1,45 +1,8 @@
 <%= render "shared/header" %>
-<div class="AccountPage">
-  <div class="AccountPage__title">
-    <h1>マイページ</h1>
-  </div><br>
-  <div class="Account__info">
-    <h2>ユーザー情報</h2>
-  </div>
-  <div class="AccountPage__form">
-    <%= form_for(current_user) do |f| %>
-      
-
-      
-      <div class="Card__title">
-    <h2>カード情報<h2>
-  </div>
-  <div class="Card_info">
-    【カード番号】
-    <br>
-    <%#= "**** **** **** " + @card[:last4] %>
-    <%# カード番号の下4桁を取得 %>
-
-    <br>
-    【有効期限】
-    <br>
-    <%= @current_user.card[:exp_month] %>
-    <%# 有効期限の「月」を取得 %>
-    /
-    <%= @current_user.card[:exp_year] %>
-    <%# 有効期限の「年」を取得 %>
-  </div>
-
-
-
  <div class="main">
   <div class="inner">
      <div class="user__wrapper">
-       
-        <%= "#{@user.nickname}さんの情報"%>
         <div class='item-contents'>
-
-        
          <h2 class='title'>
         <%= "#{@user.nickname}さんの商品一覧"%>
       </h2>
@@ -92,20 +55,7 @@
           <% end %>
         <% end %>
       </li>
-      
       </ul>
+       <%= link_to "商品一覧へ戻る", root_path%>  
    </div>
-
-
-
-
-       <br>
-   <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
-   <br>
-   <%= link_to "商品一覧へ戻る", root_path%>
-
-      <%= f.submit "更新する" %>
-    <% end %>
-  </div>
-</div>
 <%= render "shared/footer" %>

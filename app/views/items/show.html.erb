@@ -31,8 +31,6 @@
         (税込) 送料込み
       </span>
     </div>
-
-    
     <% if user_signed_in? && current_user.id == @item.user_id %>
         <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
         <p class='or-text'>or</p>
@@ -42,17 +40,11 @@
         <% if @item.click_order.nil? %> 
         <% if user_signed_in? && @item.id.present? %>
         <%= link_to '購入画面に進む', item_orders_path(@item.id), class:"item-red-btn"%>
-        <%= link_to 'ワンクリック購入する', order_item_path(@item.id), method: :post %>
+        <%= link_to 'ワンクリック購入する', order_item_path(@item.id), method: :post, class:"item-red-btn" %>
         <% end %>
         <% end %>
         <% end %>
      <% end %>
-     
-        
-        
-        
-
-
     <div class="item-explain-box">
       <span><%= @item.text %></span>
     </div>
@@ -97,43 +89,36 @@
   </div>
   <%# /商品の概要 %>
 
-
-
-<p>コメント一覧</p>
-
-  <div id="comment-box">
-   
-      <div class="scroll">
-     
+   <p>コメント一覧</p>
+    <div id="comment-box">
+    <div class="message_box" >
+      <div id="scroll", class="scroll">
         <% if @messages %>
-        <% @messages.reverse_each do |message| %>
-          <p>
+         <% @messages.reverse_each do |message| %>
+           <p>
             <strong><%= link_to message.user.nickname, "/users/#{message.user.id}" %>：</strong>
             <%= message.text %>
-          </p>
-        <% end %>
+           </p>
+          <% end %>
         <% end %>
       </div>
-
-      <div class="field">
+       <div class="field">
         <%= form_with model: [@item, @message] do |f|%>
-        <%= f.text_field :text, placeholder: "メッセージを送る" %>
+        <%= f.text_field :text, placeholder: "コメントする" %>
        </div>
-       
         <p class="comment-warn">
-        <div>
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。    
-       </div>
-      </p>
-
+         <div>
+          相手のことを考え丁寧なコメントを心がけましょう。
+         <br>
+          不快な言葉遣いなどは利用制限や退会処分となることがあります。    
+         </div>
+        </p>
       <button type="submit" class="comment-btn">
+       <span>コメントする<span>
         <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
        <% end %>
       </button>
-
+      </div>
   </div>
 
   <div class="links">
@@ -148,3 +133,4 @@
 </div>
 
 <%= render "shared/footer" %>
+
