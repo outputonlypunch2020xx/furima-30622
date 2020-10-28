@@ -1,4 +1,9 @@
-<%= form_with  url: cards_path, id: 'charge-form', class: 'card-form',local: true do |f| %>
+<%= render "shared/header" %>
+<h1 class='transaction-title-text'>
+      ワンクリック購入をする場合はカード情報の登録が必要です。
+    </h1>
+  <%= form_with model: @card, url: cards_path, id: 'charge-form', class: 'card-form',local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
  <div class="Cardpage">
     <h1>カード登録</h1>
   </div><br>
@@ -20,5 +25,6 @@
       <p>年</p>
     </div>
   </div>
-  <%= f.submit "登録する" , class:"button" %>
+  <%= f.submit "登録する" , class:"button", 'data-disable-with' => false %>
 <% end %>
+<%= render "shared/footer" %>
