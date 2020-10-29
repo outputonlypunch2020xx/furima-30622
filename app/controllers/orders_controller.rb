@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
     if @object.valid?
       pay_item
       @object.save
-      redirect_to root_path
     else
       render action: :index
     end

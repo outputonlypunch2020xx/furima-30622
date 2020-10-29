@@ -15,8 +15,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.valid?
-      @item.save
-      redirect_to root_path
+       @item.save
     else
       render 'new'
     end
@@ -32,7 +31,6 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to item_path
     else
       render :edit
     end
@@ -40,7 +38,6 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to root_path
   end
 
   def search
@@ -58,7 +55,6 @@ class ItemsController < ApplicationController
       currency: 'jpy'
     )
     ClickOrder.create(item_id: params[:id])
-    redirect_to root_path
   end
 
   private

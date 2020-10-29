@@ -18,7 +18,7 @@ class CardsController < ApplicationController
 
     if @card.valid?
       @card.save
-      redirect_to root_path
+   
     else
       render action: :new
     end

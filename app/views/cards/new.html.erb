@@ -1,13 +1,15 @@
 <%= render "shared/header" %>
+  <%= form_with model: @card, url: cards_path, id: 'charge-form', class: 'card-form',local: true do |f| %>
+  
 
-<h1 class='transaction-title-text'>
+ <div class='transaction-contents'>
+  <div class='transaction-main'>
+  <h1 class='transaction-title-text'>
       ワンクリック購入をする場合はカード情報の登録が必要です。
     </h1>
-  <%= form_with model: @card, url: cards_path, id: 'charge-form', class: 'card-form',local: true do |f| %>
+
   <%= render 'shared/error_messages', model: f.object %>
 
-<div class='transaction-contents'>
-  <div class='transaction-main'>
   <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
@@ -32,21 +34,18 @@
           <span class="indispensable">必須</span>
         </div>
         <div class='input-expiration-date-wrap'>
-      <%#= f.select :exp_month, 1..12, {include_blank: "---"}, class: "exp_month" %>
       <%= f.text_area :exp_month, class: "exp_month", placeholder:"例)3" %>
       <p>月</p>
-      <%#= f.select :exp_year, 20..25, {include_blank: "---"}, class: "exp_year" %>
       <%= f.text_area :exp_year, class: "exp_year", placeholder:"例)23" %>
       <p>年</p>
       </div>
     </div>
 
-<div class="form-group">
+ <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">セキュリティコード</label>
           <span class="indispensable">必須</span>
         </div>
- <%#= f.text_field :cvc, class:"cvc", placeholder:"カード背面にある3桁の番号", maxlength:"4" %>
  <%= f.text_field :cvc ,class:"cvc", placeholder:"カード背面4桁もしくは3桁の番号", maxlength:"4" %>
     </div>
     </div>
