@@ -14,7 +14,13 @@
           <%= image_tag item.image, class: "item-img" if item.image.attached? %>
         <% end %>
 
+
           <% if item.order.present? %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+           <% if item.click_order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
@@ -56,6 +62,8 @@
         <% end %>
       </li>
       </ul>     
-      <b><%= link_to "トップページへ戻る", root_path%></b>
+      <div class="comp-btn">
+      <%= link_to "トップページへ戻る", root_path%>
+      </div>
    </div>
 <%= render "shared/footer" %>

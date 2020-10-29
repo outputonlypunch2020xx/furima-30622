@@ -207,7 +207,6 @@
 
 .scroll {
   overflow: scroll;
-  width: 90vw;
   height: 250px; 
   padding: 10vh 15vw;
   display: flex;
@@ -228,3 +227,13 @@
     flex-direction: column;
     align-items: center;
 }
+
+.one-click-btn {
+	text-align: center;
+    background-color: #ea352d;
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFF;
+    margin: 20px 0px;
+    padding: 1vh 10vw;
+}             

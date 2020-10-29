@@ -14,7 +14,6 @@ consumer.subscriptions.create("MessageChannel", {
     <strong><a href="/users/${data.user.id}">${data.user.nickname}</a>：</strong>
     ${data.content.text}
    </p>`;
-  // `<a href="/users/">${data.user.nickname}:${data.content.text}</a>`;
     console.log(html)
     const messages = document.getElementById('scroll')
     console.log(messages)

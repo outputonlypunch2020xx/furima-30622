@@ -18,7 +18,7 @@ class CardsController < ApplicationController
 
     if @card.valid?
       @card.save
-   
+
     else
       render action: :new
     end

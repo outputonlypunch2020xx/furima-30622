@@ -40,7 +40,7 @@
         <% if @item.click_order.nil? %> 
         <% if user_signed_in? && @item.id.present? %>
         <%= link_to '購入画面に進む', item_orders_path(@item.id), class:"item-red-btn"%>
-        <%= link_to 'ワンクリック購入する', order_item_path(@item.id), method: :post, class:"item-red-btn" %>
+        <%= link_to 'ワンクリック購入する', order_item_path(@item.id), method: :post, class:"one-click-btn" %>
         <% end %>
         <% end %>
         <% end %>
